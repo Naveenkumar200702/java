@@ -1,5 +1,6 @@
 package assignment;
 import java.util.*;
+
 public class ArrayList{
 	Scanner sc=new Scanner(System.in);
 	int array[]=new int[5];
@@ -74,10 +75,10 @@ boolean index(){
 	}
 	return false;
 	}
+	
 	public static void main(String[] args)
 	{
 		boolean check=true;
-		Scanner sc=new Scanner(System.in);
 		ArrayList obj=new ArrayList();
 		while(check)
 		{	
