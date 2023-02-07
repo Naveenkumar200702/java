@@ -5,7 +5,6 @@ public class SplitArray {
 	{
 		int left=0,right=array.length;;
 		int sum1=0,sum2=0;
-		int temp=0;
 		int mid=left+right/2;
 		while(left<mid||mid<right)
 		{
@@ -27,21 +26,20 @@ public class SplitArray {
 			}
 			else if(sum1<sum2)
 			{
-				mid--;
+				mid++;
 			}
 			else {
-				mid++;
+				mid--;
 			}
 			sum2=0;
 			sum1=0;
-			
 		}
 		return -1;
 	}
 	public static void main(String[] args)
 	{
 		Scanner sc=new Scanner(System.in);
-		int array[]= {1,2,1,2,1,1};
+		int array[]= {1,2,1,1,1};
 		System.out.println("Given array "+ Arrays.toString(array));
 		int num=Split(array);
 		System.out.println("Given array "+ Arrays.toString(array));

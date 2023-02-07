@@ -43,8 +43,7 @@ public class ValidParanthesis {
 			}
 			
 		}
-		return check;
-		
+		return check;		
 	}
 	public static void main(String[] args)
 	{

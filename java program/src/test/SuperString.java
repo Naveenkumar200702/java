@@ -3,13 +3,19 @@ import java.util.*;
 public class SuperString {
 	static boolean checkValid(String x,String y)
 	{
+		char[] ch=x.toCharArray();
 		boolean check=true;
 		int count=0;
 		for(int i=0;i<y.length();i++)
 		{
-			for(int j=0;j<x.length();j++)
+			for(int j=0;j<ch.length;j++)
 			{
-				if(y.charAt(i)==x.charAt(j)) count++;	
+				if(y.charAt(i)==ch[j])
+				{
+					ch[j]='\u0000';
+					count++;	
+					break;
+				}
 			}
 		}
 		return count==y.length();

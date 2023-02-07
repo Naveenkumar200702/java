@@ -1,54 +1,65 @@
 package assignment;
-
-
-public class SinglyLinkedList {
+class LinkedList{
+//insertion and deletion takes place at end of the list
 	class Node{
 		int data;
 		Node next;
-		public Node(int data)
+		
+		Node(int input)
 		{
-			this.data=data;
-			this.next=null;
-		}
+			data=input;
+			next=null;
+		}	
 	}
-	public Node head=null;
-	public Node tail=null;
-	public void add(int data)
+	Node head;
+	Node tail;
+	LinkedList(){
+		head=null;
+	}
+	public void insertValue(int val)
 	{
-		Node newNode= new Node(data);
+		Node newNode=new Node(val);
 		if(head==null)
 		{
 			head=newNode;
 			tail=newNode;
 		}
-		else
-		{
+		else {
 			tail.next=newNode;
 			tail=newNode;
+		}	
+	}
+	public void display() {
+		Node temp=head;
+		while(temp!=null)
+		{
+			System.out.print(temp.data+" ");
+			temp=temp.next;
 		}
 	}
-	void display() {
-		Node current=head;
-		if(head==null)
+	public void delete()
+	{
+		Node temp;
+		temp=head;
+		while(temp.next.next!=null)
 		{
-			System.out.println("the list is empty");
-			return;
+			temp=temp.next;
 		}
-		while(current!=null)
-		{
-			System.out.println(current.data+" ");
-			current=current.next;
-		}
-		System.out.println();
+		temp.next=null;	
 	}
+}
+public class SinglyLinkedList {	
 	public static void main(String[] args)
 	{
-		SinglyLinkedList slist=new SinglyLinkedList();
-		slist.add(10);
-		slist.add(15);
-		slist.display();
-		
+		LinkedList slist=new LinkedList();
+		slist.insertValue(10);
+		slist.insertValue(5);
+		slist.insertValue(15);
+		slist.display();	
+		System.out.println();
+		slist.delete();
+		slist.delete();
+		slist.display();	
 	}
-	
-
 }
+
