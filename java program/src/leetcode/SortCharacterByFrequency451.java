@@ -55,7 +55,7 @@ public class SortCharacterByFrequency451 {
                 }
             }
             String str1=""+alphabet[i];
-            str+=str1.repeat(count[i]);
+          //  str+=str1.repeat(count[i]);
         } 
        //for output
         // String str="";
