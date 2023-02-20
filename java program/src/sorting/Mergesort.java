@@ -1,9 +1,9 @@
-package myprograms;
+package sorting;
 
 import java.util.Arrays;
 
 public class Mergesort {
-	public static void sort(int a[],int start,int end)
+	private static void sort(int a[],int start,int end)
 	{
 		if(start<end)
 		{
@@ -13,7 +13,7 @@ public class Mergesort {
 			merge(a,start,mid,end);
 		}
 	}
-	public static void merge(int[] a,int start,int mid,int end)
+	private static void merge(int[] a,int start,int mid,int end)
 	{
 		int temp[]=new int[end-start+1];
 		int i=start,j=mid+1,k=0;

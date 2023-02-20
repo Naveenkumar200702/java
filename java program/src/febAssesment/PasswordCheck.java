@@ -37,7 +37,7 @@ public class PasswordCheck {
 			List<String> passwordList=new ArrayList();
 			System.out.println("Enter the size passwords");
 			int size=sc.nextInt();
-			String[] password=new String[size];
+			//String[] password=new String[size];
 			System.out.println("Enter elements");
 			for(int j=0;j<size;j++)
 			{
@@ -47,10 +47,10 @@ public class PasswordCheck {
 			System.out.println("Login attemp");
 			String attempt=sc.next();
 			List<String> attemptList=new LinkedList();
-			for(int j=0;j<password.length;j++)
-			{
-				passwordList.add(password[i]);
-			}
+//			for(int j=0;j<password.length;j++)
+//			{
+//				passwordList.add(password[i]);
+//			}
 			boolean flag=object.findPassword(passwordList,attemptList,attempt,0,1);
 			if(flag)
 			{

@@ -1,25 +1,27 @@
 package study;
-abstract class GrantParent{
-	abstract void add();
-	//abstract void sub();
-}
-abstract class Parent extends GrantParent{
-	
-	void print()
-	{
+
+public class Study{
+	static class Study1{
+		void add()
+		{
+			System.out.println("works");
+		}
+	}
+	class Child extends Study1{
 		
-		System.out.println("hello");
-	}
-}
-public class Study extends Parent{
-	void add()
-	{
-		System.out.println("add");
-	}
+		void add()
+		{
+			System.out.println("child works");
+		}
+		
+	}	
 	public static void main(String[] args)
 	{
-		new Study().add();
-		new Study().print();
-	}
+		//Child object=new Child();
 
+	
+	}
 }
+
+
+

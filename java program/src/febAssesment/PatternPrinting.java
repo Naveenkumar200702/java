@@ -11,7 +11,6 @@ public class PatternPrinting {
 		int element=1;
 		for(int i=0;i<=value/2;i++)
 		{
-			
 			for(int j=i;j<value-i;j++)
 			{
 				array[i][j]=element;
@@ -21,7 +20,7 @@ public class PatternPrinting {
 				array[k][size-i]=element;
 			}		
 			for(int l=i;l<value-i;l++)
-			{
+			{	
 				array[size-i][l]=element;
 			}
 			for(int m=i;m<value-i;m++)

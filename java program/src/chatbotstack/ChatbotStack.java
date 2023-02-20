@@ -1,8 +1,7 @@
 package chatbotstack;
 import java.util.*;
 public class ChatbotStack {
-	Stack<int[]> stack=new Stack();
-	Scanner input= new Scanner(System.in);
+	private Stack<int[]> stack=new Stack();
 	public static void main(String[] args)
 	{
 		ChatbotStack object=new ChatbotStack();
@@ -11,6 +10,7 @@ public class ChatbotStack {
 	}
 	void stackImplementation()
 	{
+		Scanner input= new Scanner(System.in);
 		while(true)
 		{
 			print(Level(stack.peek()));	
@@ -30,22 +30,21 @@ public class ChatbotStack {
 				}
 			}
 			else {
-				int aray[]=stack.peek();
-				if(aray[0]>0&&aray[1]==0)
+				int value[]=stack.peek();
+				if(value[0]>0&&value[1]>0)
 				{
-					stack.push(new int[] {aray[0],option});
+					System.out.println("\t************");
+					System.out.println("\tEnter a valid option");
+					System.out.println("\t************");
 				}
-				else if(aray[0]==0&&aray[1]>0)
-				{
-					stack.push(new int[]{option,0});
-				}
+				else if(value[0]>0&&value[1]==0)
+					stack.push(new int[] {value[0],option});
+				
+				else if(value[0]==0&&value[1]>0)
+					stack.push(new int[]{option,0}); 
 				
 				else
 					stack.push(new int[]{0,option});
-			}
-			for(int[] i:stack)
-			{
-				System.out.println(Arrays.toString(i));
 			}
 		}
 		System.out.println("Thanks for Visiting our Website...");		
@@ -61,6 +60,7 @@ public class ChatbotStack {
 	}
 	String[] Level(int[] arr)
 	{	
+		// 3-dimention array to get print values
 		String[][][] content= {
 				{{"\tEnter Language","1. English"}, {"1.Recharge","2. CallerTune","3.Balance"}},
 				{{"\tChoose an option","1. 249 Unlimited calls for 1 month","2. 19 1 G.B data for One day"},
