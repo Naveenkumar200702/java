@@ -81,17 +81,17 @@ public class LoginView implements LoginViewCallBack {
 	}
 
 	@Override
-	public void callIndex() {
+	public void callIndex() {// call index while logout
 		loginIndex();
 	}
 
 	@Override
-	public void exitMethod() {
+	public void exitMethod() { // exiting method
 		System.out.println("Thank you for visiting...");
 	}
 
 	@Override
-	public void successMessage(String string) {
+	public void successMessage(String string) {//print success
 		System.out.println("****************");
 		System.out.println(string);
 		System.out.println("****************");
@@ -99,7 +99,7 @@ public class LoginView implements LoginViewCallBack {
 	}
 
 	@Override
-	public void failureMessage(String string) {
+	public void failureMessage(String string) {// to take failure message
 		System.out.println("****************");
 		System.out.println(string);
 		System.out.println("****************");
@@ -113,19 +113,19 @@ public class LoginView implements LoginViewCallBack {
 	}
 
 	@Override
-	public void callCancelModule(String userName) {
+	public void callCancelModule(String userName) {// to call cancel module
 		CancelTicketView cancelTicketView = new CancelTicketView(this);
 		cancelTicketView.CancelIndex(userName);
 	}
 
 	@Override
-	public void callAdmin() {
+	public void callAdmin() {// to call admin module
 		AdminView adminView = new AdminView(this);
 		adminView.adminIndex();
 	}
 
 	@Override
-	public void adminCredentials() {
+	public void adminCredentials() {// to checck admin credentials
 		System.out.print("Enter UserName--> ");
 		String userName = input.nextLine();
 		System.out.print("Enter password--> ");

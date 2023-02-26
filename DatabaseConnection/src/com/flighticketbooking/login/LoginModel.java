@@ -35,7 +35,6 @@ public class LoginModel {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public void addUser(String userMail, String password) {

@@ -17,7 +17,7 @@ public class BookTicketModel implements BookTicketModelCallBack {
 	private String userName;
 
 	@Override
-	public List<FlightInfo> getFlightInfo() {
+	public List<FlightInfo> getFlightInfo() {// get flight info from repository
 		return Repository.getInstance().getFlightInfo();
 	}
 
@@ -27,10 +27,11 @@ public class BookTicketModel implements BookTicketModelCallBack {
 	}
 
 	@Override
-	public void addPassengerDetail(int flightId, String passengerName, int passengerAge, long aadharNo,String seatPosition) {
-		Repository.getInstance().addPassengerInfo(flightId, passengerName, passengerAge, aadharNo,userName,seatPosition);
+	public void addPassengerDetail(int flightId, String passengerName, int passengerAge, long aadharNo,
+			String seatPosition) {
+		Repository.getInstance().addPassengerInfo(flightId, passengerName, passengerAge, aadharNo, userName,
+				seatPosition);
 	}
-
 
 	@Override
 	public void removeDetails(int noOfTicket) {

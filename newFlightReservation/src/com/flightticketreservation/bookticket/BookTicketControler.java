@@ -28,7 +28,7 @@ public class BookTicketControler implements BookTicketControlerViewCallBack, Boo
 			bookTicketView.errorMessage("Enter a Valid FlightId");
 		} else {
 			if (option1.equals("e") || option1.equals("E")) {
-				if (noOfTicket <= flightDetail.getEconomyRate()) {
+				if (noOfTicket <= flightDetail.getEconomySeat()) {
 					flightDetail.setEconomySeat(flightDetail.getEconomySeat() - noOfTicket);
 					double ticketRate = flightDetail.getEconomyRate();
 					getPassengerDetail(flightId, option1, noOfTicket, flightDetail, ticketRate);

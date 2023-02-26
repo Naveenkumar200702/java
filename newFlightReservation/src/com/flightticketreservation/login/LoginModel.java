@@ -9,7 +9,7 @@ import com.flightticketreservation.repository.Repository;
 public class LoginModel implements LoginModelCallBack {
 	
 	private LoginControlerModelCallBack loginControler;
-
+	
 	LoginModel(LoginControler loginControler) {
 		this.loginControler = loginControler;
 	}
@@ -21,22 +21,21 @@ public class LoginModel implements LoginModelCallBack {
 	}
 
 	@Override
-	public void addNewUser(String userName, String password) {
+	public void addNewUser(String userName, String password) {// adding new user
 		Repository.getInstance().addNewUser(userName,password);	
 	}
 
 	@Override
-	public void saveUserName(String userName) {
+	public void saveUserName(String userName) {// save username in loginModel
 		this.userName=userName;	
 	}
 
-	public String getUserName() {
+	public String getUserName() {// get user name from model
 		return userName;
 	}
 
 	@Override
-	public List<AdminCredentials> getAdminCredential() {
-		// TODO Auto-generated method stub
+	public List<AdminCredentials> getAdminCredential() {// get admin credentials from repository
 		return Repository.getInstance().getAdminCredentials();
 	}
 

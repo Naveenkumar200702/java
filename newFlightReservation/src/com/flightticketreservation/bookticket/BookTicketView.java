@@ -7,15 +7,17 @@ import com.flightticketreservation.dto.FlightInfo;
 import com.flightticketreservation.login.LoginView;
 
 public class BookTicketView implements BookTicketViewCallBack {
+	
 	private Scanner input = new Scanner(System.in);
 	private BookTicketControlerViewCallBack bookTicketControler;
 	private LoginView loginView;
+
 	public BookTicketView(LoginView loginView) {
-		this.loginView=loginView;
+		this.loginView = loginView;
 		bookTicketControler = new BookTicketControler(this);
 	}
 
-	public void bookTicketIndex(String UserName) {
+	public void bookTicketIndex(String UserName) {// to show flight details
 		bookTicketControler.setUserName(UserName);
 		getFlightInfo();
 	}
@@ -46,31 +48,31 @@ public class BookTicketView implements BookTicketViewCallBack {
 		System.out.print("Choose Economy / Business class? (E/B)-->");
 		String option1 = input.nextLine();
 		System.out.print("Enter Number Of Ticket-->");
-		int noOfticket=input.nextInt();
+		int noOfticket = input.nextInt();
 		input.nextLine();
-		bookTicketControler.bookTicket(option,option1,noOfticket);
+		bookTicketControler.bookTicket(option, option1, noOfticket);
 	}
 
 	@Override
 	public void errorMessage(String string) {// to show all error message
-		System.out.println("--> "+string+" <--");
+		System.out.println("--> " + string + " <--");
 		System.out.println("******************");
 		checkContinue();
 	}
 
-	public void checkContinue() {
+	public void checkContinue() {                // to check continue
 		System.out.print("Do you want to continue? (y/n)-->");
-		String option=input.nextLine();
+		String option = input.nextLine();
 		System.out.println("**********************************");
 		bookTicketControler.checkContinue(option);
 	}
 
 	public void callIndex() {// to call Index
-		loginView.showbookingIndex();		
+		loginView.showbookingIndex();
 	}
 
 	@Override
-	public void getPassengerDetails(int passengerCount, int flightId, String option1, double ticketRate) {// get passenger details
+	public void getPassengerDetails(int passengerCount, int flightId, String option1, double ticketRate) {// get  passenger details																						
 		System.out.println("****************************");
 		System.out.println("Passenger Details--> " + passengerCount);
 		System.out.print("Enter Name-->");
@@ -80,24 +82,24 @@ public class BookTicketView implements BookTicketViewCallBack {
 		System.out.print("Enter Aadhar No-->");
 		long aadharNo = input.nextLong();
 		input.nextLine();
-		bookTicketControler.addPassengerDetail(flightId,passengerName, passengerAge, aadharNo,ticketRate,option1);
+		bookTicketControler.addPassengerDetail(flightId, passengerName, passengerAge, aadharNo, ticketRate, option1);
 	}
 
 	@Override
-	public void getPayment(double ticketRate, int noOfTicket,String levelClass,FlightInfo flightDetails) {
-		System.out.println("Proceed to pay "+(ticketRate*noOfTicket)+" (y/n) -->");
-		String checkPayment=input.nextLine();
-		bookTicketControler.checkPayments(checkPayment,noOfTicket,levelClass,flightDetails);
+	public void getPayment(double ticketRate, int noOfTicket, String levelClass, FlightInfo flightDetails) {// to get confirmation about payment
+		System.out.println("Proceed to pay " + (ticketRate * noOfTicket) + " (y/n) -->");
+		String checkPayment = input.nextLine();
+		bookTicketControler.checkPayments(checkPayment, noOfTicket, levelClass, flightDetails);
 	}
 
 	@Override
-	public void message(String string) {
-		System.out.println("--> "+string+" <--");
+	public void message(String string) {// to print messages
+		System.out.println("--> " + string + " <--");
 		System.out.println("****************");
 		checkContinue();
 	}
-	
-	public void exitMethod() {
+
+	public void exitMethod() { // exiting method
 		System.out.println("--> Thank you For visiting <--");
 	}
 

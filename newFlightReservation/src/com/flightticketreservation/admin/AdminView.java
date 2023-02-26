@@ -39,7 +39,7 @@ public class AdminView implements AdminViewCallBack {
 					+ flightDetail.getBusinessRate());
 		}
 		System.out.println(
-				"**************************************************************************************************************************************8*");
+				"**************************************************************************************************************************");
 		checkContinue();
 	}
 
@@ -59,7 +59,6 @@ public class AdminView implements AdminViewCallBack {
 		System.out.print("Enter Flight Name-->");
 		String flightName = input.nextLine();
 		System.out.print("Enter PickupPoint-->");
-		input.nextLine();
 		String pickUpPoint = input.nextLine();
 		System.out.print("Enter Destination Point-->");
 		String destination = input.nextLine();
