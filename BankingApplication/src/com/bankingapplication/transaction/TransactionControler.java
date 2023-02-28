@@ -89,21 +89,17 @@ public class TransactionControler implements TransactionControlerModelCallBack, 
 	}
 
 	@Override
-	public void checkBalance(double transferAmount) {//  for bank transfer
-		if(transactionModel.checkBalance(transferAmount))
-		{
-			long transferAccount=transactionView.getTransferAccount();
-			if(transactionModel.transferAmount(transferAccount,transferAmount))
-			{
+	public void checkBalance(double transferAmount) {// for bank transfer
+		if (transactionModel.checkBalance(transferAmount)) {
+			long transferAccount = transactionView.getTransferAccount();
+			if (transactionModel.transferAmount(transferAccount, transferAmount)) {
 				transactionView.successMessage("Transfered Succesfully");
-			}
-			else {
+			} else {
 				transactionView.failureMessage("Unable to transfer");
 			}
-		}
-		else {
+		} else {
 			transactionView.failureMessage("Low Balance");
-		}	
+		}
 	}
 
 	@Override
@@ -113,21 +109,19 @@ public class TransactionControler implements TransactionControlerModelCallBack, 
 
 	@Override
 	public void getTransactionHistory() {
-		List<TransactionHistory> history=transactionModel.getTransactionHistory();
-		if(history.size()==0)
-		{
+		List<TransactionHistory> history = transactionModel.getTransactionHistory();
+		if (history.size() == 0) {
 			transactionView.errorMessage("No available Transaction Details");
-		}
-		else
-		{
+		} else {
 			transactionView.showHistory(history);
 		}
-		
+
 	}
+
 //---------------------------------for requesting loans-------------------------------------------------------
 	@Override
 	public void loanRequest(double loanAmount, double salary) {
-		transactionModel.loanRequest(loanAmount,salary);
+		transactionModel.loanRequest(loanAmount, salary);
 	}
 
 	@Override
@@ -146,9 +140,9 @@ public class TransactionControler implements TransactionControlerModelCallBack, 
 	}
 
 	@Override
-	public void setAsked(boolean b,long customerId) {
-		transactionModel.setAsked(b,customerId);
-		
+	public void setAsked(boolean b, long customerId) {
+		transactionModel.setAsked(b, customerId);
+
 	}
 
 }

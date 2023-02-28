@@ -29,48 +29,54 @@ public class Repository extends UserEncryption {
 		}
 		return repository;
 	}
+
 // =========================list to store data=================================	
 	private Map<UserCredentials, UserInfo> userDetails = new HashMap();
 	private List<AdminCredentials> adminCredential = new ArrayList<>();
 	private Map<UserInfo, AccountInfo> accountInfo = new HashMap();
-	private List<LoanRequest> loanInfo=new LinkedList();
-	
+	private List<LoanRequest> loanInfo = new LinkedList();
+
 //===========================initial values=========================================
-	
+
 	private void initialValue() {
-		//=======================admin credential=============================
+		// =======================admin credential=============================
 		adminCredential.add(new AdminCredentials("admin", "benjo", 1));
-		//---------------------------USER 1-------------------------//
+		// ---------------------------USER 1-------------------------//
 		UserCredentials user = new UserCredentials(123456, "234567", 1);
 		UserInfo userdetail = new UserInfo(123456789l, 123456l, "naveen", "male", 9159474530l, "20/07/2002", 20,
 				123456789012l, false);
 		userDetails.put(user, userdetail);
-		AccountInfo accountInfo=new AccountInfo(123456l,123456789l,"saving","2345",1);
-		List<TransactionHistory> history=accountInfo.getTransactionDetail();
-		TransactionHistory detail=new TransactionHistory(123456,20000,"deposit",123456789l,123456789l,LocalDate.of(2022, 03,10),LocalTime.of(12,20));
+		AccountInfo accountInfo = new AccountInfo(123456l, 123456789l, "saving", "2345", 1);
+		List<TransactionHistory> history = accountInfo.getTransactionDetail();
+		TransactionHistory detail = new TransactionHistory(123456, 20000, "deposit", 123456789l, 123456789l,
+				LocalDate.of(2022, 03, 10), LocalTime.of(12, 20));
 		history.add(detail);
-		detail=new TransactionHistory(123456,2500,"transfer",123456789l,12345671l,LocalDate.of(2022, 03,10),LocalTime.of(12,20));
+		detail = new TransactionHistory(123456, 2500, "transfer", 123456789l, 12345671l, LocalDate.of(2022, 03, 10),
+				LocalTime.of(12, 20));
 		history.add(detail);
 		accountInfo.setTransactionDetail(history);
-		this.accountInfo.put(userdetail,accountInfo);
-		
-		//------------------------USER 2--------------------------//
-		
-		user=new UserCredentials(12345,"23456",1);
-		userdetail=new UserInfo(12345671l,12345l,"suja","female",6385300519l,"23/07/2002",20,123456789123l,false);
+		this.accountInfo.put(userdetail, accountInfo);
+
+		// ------------------------USER 2--------------------------//
+
+		user = new UserCredentials(12345, "23456", 1);
+		userdetail = new UserInfo(12345671l, 12345l, "suja", "female", 6385300519l, "23/07/2002", 20, 123456789123l,
+				false);
 		userDetails.put(user, userdetail);
-		accountInfo=new AccountInfo(12345l,12345671l,"saving","2345",1);
-		List<TransactionHistory> history1=accountInfo.getTransactionDetail();
-		detail=new TransactionHistory(12345,26000,"deposit",12345671l,12345671l,LocalDate.of(2023, 03,10),LocalTime.of(1,20));
+		accountInfo = new AccountInfo(12345l, 12345671l, "saving", "2345", 1);
+		List<TransactionHistory> history1 = accountInfo.getTransactionDetail();
+		detail = new TransactionHistory(12345, 26000, "deposit", 12345671l, 12345671l, LocalDate.of(2023, 03, 10),
+				LocalTime.of(1, 20));
 		history1.add(detail);
-		detail=new TransactionHistory(12345,2600,"transfer",12345671l,123456789l,LocalDate.of(2023, 03,10),LocalTime.of(3,20));
+		detail = new TransactionHistory(12345, 2600, "transfer", 12345671l, 123456789l, LocalDate.of(2023, 03, 10),
+				LocalTime.of(3, 20));
 		history1.add(detail);
 		accountInfo.setTransactionDetail(history1);
 		this.accountInfo.put(userdetail, accountInfo);
 	}
 
 //========================check user to login=========================================
-	
+
 	public HashMap checkValidUser(String customerId, String uPassword) { // get encrypted password
 		HashMap<Integer, String> credential = new HashMap<>();
 		for (UserCredentials check : userDetails.keySet()) {
@@ -83,7 +89,7 @@ public class Repository extends UserEncryption {
 	}
 
 //==============================adding new User==========================================
-	
+
 	public boolean addNewUser(long accountNo, long customerId, String name, String gender, long phoneNumber, String dob,
 			int age, // adding new user
 			long aadharNumber, Map<Integer, String> encryptPassword) {
@@ -97,7 +103,7 @@ public class Repository extends UserEncryption {
 	}
 
 //============================getting one time password==================================
-	
+
 	public Map getOneTimePassword(Long customerId) {
 
 		for (UserInfo key : userDetails.values()) {
@@ -109,7 +115,7 @@ public class Repository extends UserEncryption {
 	}
 
 //============================adding userCredentials======================================
-	
+
 	public boolean addUserCredentials(long customerId, String password) {
 		Map<Integer, String> encrypt = encrypt(password);
 		int keyValue = 0;
@@ -129,7 +135,7 @@ public class Repository extends UserEncryption {
 	}
 
 //========================getting admin credentials to validate==========================
-	
+
 	public AdminCredentials getAdminCredentials(String adminName, String password) {
 		for (AdminCredentials credential : adminCredential) {
 			if (credential.getUserName().equals(adminName)) {
@@ -140,14 +146,14 @@ public class Repository extends UserEncryption {
 	}
 
 //=============================adding new Admin===================================
-	
+
 	public boolean addNewAdmin(String adminName, String passWord, int key) {
 		adminCredential.add(new AdminCredentials(adminName, passWord, key));
 		return true;
 	}
 
 //================getting flag value to find first time login or not=============
-	
+
 	public boolean getFlag(long customerId) {
 		for (Map.Entry key : userDetails.entrySet()) {
 			UserInfo credential = (UserInfo) key.getValue();
@@ -159,44 +165,38 @@ public class Repository extends UserEncryption {
 	}
 
 //=============================adding account Information=========================
-	
+
 	public void addAccountInfo(long customerId, String accountType, int key, String enPin) {
-		UserInfo userDetail=null;
-		for(Map.Entry val:userDetails.entrySet())
-		{
-			UserInfo value=(UserInfo) val.getValue();
-			if(value.getCustomerId()==customerId)
-			{
-				userDetail=value;
+		UserInfo userDetail = null;
+		for (Map.Entry val : userDetails.entrySet()) {
+			UserInfo value = (UserInfo) val.getValue();
+			if (value.getCustomerId() == customerId) {
+				userDetail = value;
 			}
 		}
 		userDetail.setFlag(false);
-		accountInfo.put(userDetail,new AccountInfo(customerId,userDetail.getAadharNo(),accountType,enPin,key));
+		accountInfo.put(userDetail, new AccountInfo(customerId, userDetail.getAadharNo(), accountType, enPin, key));
 	}
 
 //====================to get account information in the form of  hashmap======================
-	
+
 	public Map<UserInfo, AccountInfo> getMyInfo(long customerId) {
-	Map<UserInfo,AccountInfo> myInfo=new HashMap();
-	for(Map.Entry<UserInfo, AccountInfo> val:accountInfo.entrySet())
-	{
-		UserInfo current=val.getKey();
-		if(current.getCustomerId()==customerId)
-		{
-			myInfo.put(val.getKey(), val.getValue());
+		Map<UserInfo, AccountInfo> myInfo = new HashMap();
+		for (Map.Entry<UserInfo, AccountInfo> val : accountInfo.entrySet()) {
+			UserInfo current = val.getKey();
+			if (current.getCustomerId() == customerId) {
+				myInfo.put(val.getKey(), val.getValue());
+			}
 		}
-	}
 		return myInfo;
 	}
 
 //=====================getting account info only===========================
 	public AccountInfo getAccountDetail(long customerId) {
 		AccountInfo info;
-		for(Map.Entry val:accountInfo.entrySet())
-		{
-			info=(AccountInfo) val.getValue();
-			if(info.getCustomerId()==customerId)
-			{
+		for (Map.Entry val : accountInfo.entrySet()) {
+			info = (AccountInfo) val.getValue();
+			if (info.getCustomerId() == customerId) {
 				return info;
 			}
 		}
@@ -204,14 +204,12 @@ public class Repository extends UserEncryption {
 	}
 
 //=======================getting pin to validate transaction======================
-	
+
 	public String getPin(long customerId) {
-		String pin="";
-		for(AccountInfo val:accountInfo.values())
-		{
-			if(val.getCustomerId()==customerId)
-			{
-				pin=decrypt(val.getPin(),val.getKey());
+		String pin = "";
+		for (AccountInfo val : accountInfo.values()) {
+			if (val.getCustomerId() == customerId) {
+				pin = decrypt(val.getPin(), val.getKey());
 			}
 		}
 		return pin;
@@ -219,10 +217,8 @@ public class Repository extends UserEncryption {
 
 //========================get receiver account to transfer amount=======================
 	public AccountInfo getTransferAccount(long transferAccount) {
-		for(AccountInfo val:accountInfo.values())
-		{
-			if(val.getAccountNumber()==transferAccount)
-			{
+		for (AccountInfo val : accountInfo.values()) {
+			if (val.getAccountNumber() == transferAccount) {
 				return val;
 			}
 		}
@@ -230,23 +226,21 @@ public class Repository extends UserEncryption {
 	}
 
 //================================getting transactionHistory==========================
-	
+
 	public List<TransactionHistory> getTransactionHistory(long customerId) {
-		AccountInfo info=getAccountDetail(customerId);
+		AccountInfo info = getAccountDetail(customerId);
 		return info.getTransactionDetail();
 	}
 //====================================loan Request=======================================
-	
+
 	public void loanRequest(double loanAmount, double salary, long customerId) {
-		loanInfo.add(new LoanRequest(loanAmount,salary,customerId,true,false));
+		loanInfo.add(new LoanRequest(loanAmount, salary, customerId, true, false));
 	}
 
 	public int getLoanRequest() {
-		int count=0;
-		for(LoanRequest val:loanInfo)
-		{
-			if(val.isLoanRequest())
-			{
+		int count = 0;
+		for (LoanRequest val : loanInfo) {
+			if (val.isLoanRequest()) {
 				count++;
 			}
 		}
@@ -258,28 +252,22 @@ public class Repository extends UserEncryption {
 	}
 
 	public void validateLoan(double id, boolean check) {
-		for(LoanRequest val:loanInfo)
-		{
-			if(val.getCustomerId()==id)
-			{
+		for (LoanRequest val : loanInfo) {
+			if (val.getCustomerId() == id) {
 				val.setLoanRequest(false);
-				if(check==true)
-				{
+				if (check == true) {
 					val.setApproval(check);
-				}
-				else {
+				} else {
 					val.setApproval(check);
 				}
 			}
-		}	
+		}
 	}
 
 	public boolean getAsked(long customerId) {
-		
-		for(LoanRequest val:loanInfo)
-		{
-			if(val.getCustomerId()==customerId)
-			{
+
+		for (LoanRequest val : loanInfo) {
+			if (val.getCustomerId() == customerId) {
 				return val.isAsked();
 			}
 		}
@@ -287,10 +275,8 @@ public class Repository extends UserEncryption {
 	}
 
 	public boolean getApproval(long customerId) {
-		for(LoanRequest val:loanInfo)
-		{
-			if(val.getCustomerId()==customerId)
-			{
+		for (LoanRequest val : loanInfo) {
+			if (val.getCustomerId() == customerId) {
 				return val.isApproval();
 			}
 		}
@@ -298,10 +284,8 @@ public class Repository extends UserEncryption {
 	}
 
 	public boolean getRequest(long customerId) {
-		for(LoanRequest val:loanInfo)
-		{
-			if(val.getCustomerId()==customerId)
-			{
+		for (LoanRequest val : loanInfo) {
+			if (val.getCustomerId() == customerId) {
 				return val.isLoanRequest();
 			}
 		}
@@ -309,14 +293,10 @@ public class Repository extends UserEncryption {
 	}
 
 	public void setAsked(boolean b, long customerId) {
-		for(LoanRequest val:loanInfo)
-		{
-			if(val.getCustomerId()==customerId)
-			{
+		for (LoanRequest val : loanInfo) {
+			if (val.getCustomerId() == customerId) {
 				val.setAsked(b);
 			}
 		}
-		
 	}
-
 }

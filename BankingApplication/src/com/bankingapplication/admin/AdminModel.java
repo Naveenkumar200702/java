@@ -19,8 +19,7 @@ public class AdminModel extends UserEncryption implements AdminModelCallBack {
 	@Override
 	public boolean checkCredentials(String adminName, String password) {
 		AdminCredentials credential = Repository.getInstance().getAdminCredentials(adminName, password);
-		if(credential==null)
-		{
+		if (credential == null) {
 			adminControler.errorMessage("Enter a Valid userName");
 		}
 		String checkPassword = decrypt(credential.getPassWord(), credential.getKey());
@@ -41,6 +40,7 @@ public class AdminModel extends UserEncryption implements AdminModelCallBack {
 		}
 		return Repository.getInstance().addNewAdmin(adminName, passWord, key);
 	}
+
 //=========================================loan Request======================================
 	@Override
 	public int getLoanRequest() {
@@ -54,8 +54,8 @@ public class AdminModel extends UserEncryption implements AdminModelCallBack {
 
 	@Override
 	public void validateAccount(double id, boolean check) {
-		Repository.getInstance().validateLoan(id,check);
-		
+		Repository.getInstance().validateLoan(id, check);
+
 	}
 
 }

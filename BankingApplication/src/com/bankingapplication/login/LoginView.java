@@ -18,8 +18,9 @@ public class LoginView implements LoginViewCallBack {
 		LoginView loginView = new LoginView();
 		loginView.loginIndex();
 	}
+
 //=========================Login Index====================================================
-	public void loginIndex() {                                                        // login index
+	public void loginIndex() { // login index
 		System.out.println("\t-----> Welcome to Indian Bank <------\n");
 		System.out.println("Enter 1: Admin Login");
 		System.out.println("Enter 2: Existing User");
@@ -29,7 +30,7 @@ public class LoginView implements LoginViewCallBack {
 		System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_");
 		input.nextLine();
 		int option = Character.getNumericValue(value);
-		switch (option) {	
+		switch (option) {
 		case 1:
 			System.out.println("Welcome to Admin Login --->");
 			new AdminView().adminIndex();
@@ -39,24 +40,24 @@ public class LoginView implements LoginViewCallBack {
 			System.out.print("Enter Customer Id--->");
 			String customerId = input.nextLine();
 			System.out.print("Enter password-->");
-			String uPassword= input.nextLine();
-			loginControler.userVerify(customerId,uPassword);
+			String uPassword = input.nextLine();
+			loginControler.userVerify(customerId, uPassword);
 			break;
 		case 3:
 			System.out.print("Enter your name --->");
-			String name=input.nextLine();
+			String name = input.nextLine();
 			System.out.print("Enter your Gender --->");
-			String gender=input.nextLine();
+			String gender = input.nextLine();
 			System.out.print("Enter your phoneNo -->");
-			String phoneNo=input.nextLine();
+			String phoneNo = input.nextLine();
 			System.out.print("Date-Of-Birth (DD/MM/YYYY) --->");
-			String dob=input.nextLine();
+			String dob = input.nextLine();
 			System.out.print("Enter your age-->");
-			String age=input.nextLine();
+			String age = input.nextLine();
 			System.out.print("Enter your aadharNo --->");
-			String aadharNo=input.nextLine();
-			loginControler.addNewUser(name,gender,phoneNo,dob,age,aadharNo);
-			break;	
+			String aadharNo = input.nextLine();
+			loginControler.addNewUser(name, gender, phoneNo, dob, age, aadharNo);
+			break;
 		case 4:
 			exitMethod();
 			break;
@@ -65,38 +66,40 @@ public class LoginView implements LoginViewCallBack {
 			System.out.println("--------------------");
 			loginIndex();
 			break;
-		}	
+		}
 	}
+
 //========================================FirstTime Login========================================
 	public void firstTimeLogin() {
-		 long customerId=loginControler.getCustomerId();
-		 String password=loginControler.getOneTimePassword(customerId);
-		 System.out.println("This is your customer-->"+customerId);
-		 System.out.println("This is one time passWord "+password);
-		 System.out.print("Enter Customer ID --->");
-		 long firstcustomerId=input.nextLong();
-		 input.nextLine();
-		 System.out.print("Enter password --->");
-		 String firstpassword=input.nextLine();
-		 loginControler.validateFirstTimeLogin(customerId,password,firstcustomerId,firstpassword);
+		long customerId = loginControler.getCustomerId();
+		String password = loginControler.getOneTimePassword(customerId);
+		System.out.println("This is your customer-->" + customerId);
+		System.out.println("This is one time passWord " + password);
+		System.out.print("Enter Customer ID --->");
+		long firstcustomerId = input.nextLong();
+		input.nextLine();
+		System.out.print("Enter password --->");
+		String firstpassword = input.nextLine();
+		loginControler.validateFirstTimeLogin(customerId, password, firstcustomerId, firstpassword);
 	}
 
 //======================Printing Messages============================================
 	@Override
 	public void message(String message) {
 		System.out.println();
-		System.out.println("\t"+message);
+		System.out.println("\t" + message);
 		System.out.println("\t------------");
-		continueCheck();	
+		continueCheck();
 	}
+
 //=====================================Getting new Password===========================
 	@Override
 	public void newPassword(long customerId) {
 		System.out.print("Please Enter new PassWord --->");
-		String password=input.nextLine();
+		String password = input.nextLine();
 		System.out.print("Please re-enter passWord --->");
-		String rePassword=input.nextLine();
-		loginControler.validatePassword(customerId,password,rePassword);
+		String rePassword = input.nextLine();
+		loginControler.validatePassword(customerId, password, rePassword);
 	}
 
 //======================first timeLogin=======================================
@@ -108,10 +111,9 @@ public class LoginView implements LoginViewCallBack {
 	}
 
 //===============================check to continue or Not==========================
-	public void continueCheck()
-	{
+	public void continueCheck() {
 		System.out.print("Do you want to continue? (y/n) -->");
-		String option=input.nextLine();
+		String option = input.nextLine();
 		loginControler.continueCheck(option);
 	}
 
@@ -122,7 +124,7 @@ public class LoginView implements LoginViewCallBack {
 		System.out.println("-------------------");
 		continueCheck();
 	}
-	
+
 //=============================Exiting method========================================
 	@Override
 	public void exitMethod() {
@@ -142,13 +144,13 @@ public class LoginView implements LoginViewCallBack {
 	public void AccoutRegistermessage(String string) {
 		System.out.println(string);
 		System.out.println("---------------");
-		firstTimeLogin();	
+		firstTimeLogin();
 	}
 
 //===============================loginsuccesfull message==================================
 	@Override
 	public void loginSuccesfull(long customerId) {
 		System.out.println("_-_-_-_-_-_-_-_-_-_-_-_-_-_");
-		new TransactionView().transactionIndex(customerId);	
+		new TransactionView().transactionIndex(customerId);
 	}
 }

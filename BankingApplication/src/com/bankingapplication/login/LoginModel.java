@@ -16,6 +16,7 @@ public class LoginModel extends UserEncryption implements LoginModelCallBack {
 	}
 
 	private long customerId;
+
 //======================================verify user credentials=========================================
 	public boolean userVerify(String customerId, String uPassword) {
 
@@ -31,33 +32,34 @@ public class LoginModel extends UserEncryption implements LoginModelCallBack {
 			}
 			String password = decrypt(encrypt, key);
 			if (password.equals(uPassword)) {
-				
+
 				this.customerId = Long.parseLong(customerId);
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 //==================================adding new user==================================
 	@Override
-	public boolean addNewUser(String name, String gender, long phoneNumber, String dob, int ageNumber,  // adding new User
+	public boolean addNewUser(String name, String gender, long phoneNumber, String dob, int ageNumber, // adding new
+																										// User
 			long aadharNumber) {
-		long customerID = System.currentTimeMillis()/6000;
-		this.customerId=customerID;
+		long customerID = System.currentTimeMillis() / 6000;
+		this.customerId = customerID;
 		String oneTimePassword = generateOneTimePassWord();
 		Map<Integer, String> encryptPassword = encrypt(oneTimePassword);
-		long accountNo=System.currentTimeMillis();
-		return Repository.getInstance().addNewUser(accountNo,customerID, name, gender, phoneNumber, dob, ageNumber, aadharNumber,
-				encryptPassword);
+		long accountNo = System.currentTimeMillis();
+		return Repository.getInstance().addNewUser(accountNo, customerID, name, gender, phoneNumber, dob, ageNumber,
+				aadharNumber, encryptPassword);
 	}
 
 //=================================method to generate one time password====================
 	private String generateOneTimePassWord() {
 		UUID uuid = UUID.randomUUID();
-        String value=uuid.toString().replace("-","");
-        String password = value.substring(value.length() - 8);
-        return password;
+		String value = uuid.toString().replace("-", "");
+		String password = value.substring(value.length() - 8);
+		return password;
 	}
 
 //=======================method to get customer id================================
@@ -68,22 +70,22 @@ public class LoginModel extends UserEncryption implements LoginModelCallBack {
 
 //=======================method to get one time password==========================
 	@Override
-	public String getOneTimePassword(long customerId) {	
-		Map<Integer,String> password=Repository.getInstance().getOneTimePassword(customerId);
-		int key=0;
-		String ePassword="";
-		for(Map.Entry value:password.entrySet())
-		{
-			key=(int)value.getKey();
-			ePassword=(String)value.getValue();
+	public String getOneTimePassword(long customerId) {
+		Map<Integer, String> password = Repository.getInstance().getOneTimePassword(customerId);
+		int key = 0;
+		String ePassword = "";
+		for (Map.Entry value : password.entrySet()) {
+			key = (int) value.getKey();
+			ePassword = (String) value.getValue();
 		}
-		String dPassword=decrypt(ePassword,key);
+		String dPassword = decrypt(ePassword, key);
 		return dPassword;
 	}
+
 //==================adding new password==============================
 	@Override
 	public boolean addPassWord(long customerId, String password) {
-		return Repository.getInstance().addUserCredentials(customerId,password);
+		return Repository.getInstance().addUserCredentials(customerId, password);
 	}
 
 }

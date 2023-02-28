@@ -11,8 +11,8 @@ public class AccountInfo {
 	private String pin;
 	private int key;
 	private double balance = 2000;
-	private List<TransactionHistory> transactionDetail=new LinkedList();
-	
+	private List<TransactionHistory> transactionDetail = new LinkedList();
+
 	public AccountInfo(long customerId, long accountNumber, String accountType, String pin, int key) {
 		this.customerId = customerId;
 		this.accountNumber = accountNumber;

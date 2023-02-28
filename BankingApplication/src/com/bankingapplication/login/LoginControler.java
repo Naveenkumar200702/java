@@ -5,18 +5,18 @@ public class LoginControler implements LoginControlerViewCallBack, LoginControle
 	private LoginViewCallBack loginView;
 	private LoginModelCallBack loginModel;
 
-	
 	public LoginControler(LoginView loginView) {
 		this.loginView = loginView;
 		loginModel = new LoginModel(this);
 	}
+
 //===================================Verify User===========================================
 	@Override
 	public void userVerify(String customerId, String uPassword) {
 
 		if (customerId.matches("[0-9]+")) {
 			if (loginModel.userVerify(customerId, uPassword)) {
-				long Id=Long.parseLong(customerId);
+				long Id = Long.parseLong(customerId);
 				loginView.loginSuccesfull(Id);
 			} else {
 				loginView.errorMessage("your passWord is Wrong");
@@ -28,7 +28,11 @@ public class LoginControler implements LoginControlerViewCallBack, LoginControle
 
 //==========================Adding New User==========================================
 	@Override
-	public void addNewUser(String name, String gender, String phoneNo, String dob, String age, String aadharNo) {// getting user info to store 
+	public void addNewUser(String name, String gender, String phoneNo, String dob, String age, String aadharNo) {// getting
+																													// user
+																													// info
+																													// to
+																													// store
 		name = name.toLowerCase();
 		gender = gender.toLowerCase();
 		if (!name.matches("[a-z]+")) {
@@ -93,16 +97,13 @@ public class LoginControler implements LoginControlerViewCallBack, LoginControle
 //==============================validate normal signup========================
 	@Override
 	public void validatePassword(long customerId, String password, String rePassword) {
-		if(password.equals(rePassword))
-		{
-			if(loginModel.addPassWord(customerId,password))
-			{
+		if (password.equals(rePassword)) {
+			if (loginModel.addPassWord(customerId, password)) {
 				loginView.passwordResetMessage("User name and password added succesfully");
 			}
-		}
-		else {
+		} else {
 			loginView.firstTimeLogin();
 		}
-		
+
 	}
 }

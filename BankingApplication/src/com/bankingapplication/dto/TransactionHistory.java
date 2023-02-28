@@ -13,15 +13,15 @@ public class TransactionHistory {
 	private LocalDate date;
 	private LocalTime time;
 
-	public TransactionHistory(long customerId, double transferAmount, String option,long from, long to, LocalDate date,
+	public TransactionHistory(long customerId, double transferAmount, String option, long from, long to, LocalDate date,
 			LocalTime time) {
-		this.customerId=customerId;
-		this.transferAmount=transferAmount;
-		this.option=option;
+		this.customerId = customerId;
+		this.transferAmount = transferAmount;
+		this.option = option;
 		this.setFrom(from);
-		this.to=to;
-		this.date=date;
-		this.time=time;	
+		this.to = to;
+		this.date = date;
+		this.time = time;
 	}
 
 	public long getCustomerId() {

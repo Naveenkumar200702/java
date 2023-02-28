@@ -33,11 +33,10 @@ public class TransactionView implements TransactionViewCallBack {
 				System.out.println("\t\tYour Loan Request is Underr processs");
 			else if (approval == false && request == false) {
 				System.out.println("\t Unable to give loan to your account");
-				transactionControler.setAsked(false,customerId);
-			}
-			else if (approval == true && request == false) {
+				transactionControler.setAsked(false, customerId);
+			} else if (approval == true && request == false) {
 				System.out.println("\t Your Loan request is accepted");
-				transactionControler.setAsked(false,customerId);
+				transactionControler.setAsked(false, customerId);
 			}
 
 		}
@@ -193,14 +192,15 @@ public class TransactionView implements TransactionViewCallBack {
 	public void showHistory(List<TransactionHistory> history) {
 		System.out.println("---> Transaction History <---");
 		System.out.println();
-		System.out.printf("%15s | %15s |%15s| %15s | %15s | %15s | %15s|%n", "CustomerId", "Detail", "From ", "Receiver",
-				" Amount", "Date", "Time");
+		System.out.printf("%15s | %15s |%15s| %15s | %15s | %15s | %15s|%n", "CustomerId", "Detail", "From ",
+				"Receiver", " Amount", "Date", "Time");
 		for (TransactionHistory val : history) {
 			System.out.printf("%15d | %15s | %15d | %15d | %15.2f | %15s | %15s|%n", val.getCustomerId(),
 					val.getOption(), val.getFrom(), val.getTo(), val.getTransferAmount(), val.getDate().toString(),
 					val.getTime().toString());
 		}
-		System.out.println("---------------------------------------------------------------------------------------------------------");
+		System.out.println(
+				"---------------------------------------------------------------------------------------------------------");
 		checkContinue();
 	}
 

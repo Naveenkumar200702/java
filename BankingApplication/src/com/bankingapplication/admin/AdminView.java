@@ -59,9 +59,9 @@ public class AdminView implements AdminViewCallBack {
 		List<LoanRequest> list = adminControler.getLoanRequest();
 		for (LoanRequest val : list) {
 			if (val.isLoanRequest() == true) {
-				System.out.printf("%15s| %15s| %15s |%n","customerId","Salary","Loan Amount");
-				System.out.printf("| %15d| %15.2f |%15.2f |%n",
-						val.getCustomerId(),val.getCustomerSalary(),val.getLoanAmount());
+				System.out.printf("%15s| %15s| %15s |%n", "customerId", "Salary", "Loan Amount");
+				System.out.printf("| %15d| %15.2f |%15.2f |%n", val.getCustomerId(), val.getCustomerSalary(),
+						val.getLoanAmount());
 				System.out.println("===============-==============");
 				System.out.print("Enter Id to proceed -->");
 				double id = input.nextDouble();
@@ -72,7 +72,7 @@ public class AdminView implements AdminViewCallBack {
 		}
 		input.nextLine();
 		continueCheck();
-		
+
 	}
 
 	public void continueCheck() {

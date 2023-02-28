@@ -44,8 +44,9 @@ public class AdminControler implements AdminControlerViewCallBack, AdminControle
 	@Override
 	public void errorMessage(String string) {
 		adminView.errorMessage(string);
-		
+
 	}
+
 //========================loan request====================
 	@Override
 	public int loanRequest() {
@@ -54,15 +55,14 @@ public class AdminControler implements AdminControlerViewCallBack, AdminControle
 
 	@Override
 	public List<LoanRequest> getLoanRequest() {
-		List<LoanRequest> info=adminModel.getAccountLoan();
+		List<LoanRequest> info = adminModel.getAccountLoan();
 		return info;
 	}
 
 	@Override
 	public void validateAdminCheck(double id, boolean check) {
-		adminModel.validateAccount(id,check);
-		
+		adminModel.validateAccount(id, check);
+
 	}
 
-	
 }

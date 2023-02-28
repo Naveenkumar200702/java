@@ -82,7 +82,7 @@ public class AdminControler implements AdminControlerModelCallBack, AdminControl
 //========================adding new courses=========================
 	@Override
 	public void addCourse(String courseName, String courseInfo, String courseModule, String startDate, String endDate,
-			String examDate,String traineeId) {
+			String examDate, String traineeId) {
 		courseName = courseName.toLowerCase();
 		startDate = startDate.replace("/", "-");
 		endDate = endDate.replace("/", "-");
@@ -101,7 +101,7 @@ public class AdminControler implements AdminControlerModelCallBack, AdminControl
 			adminView.errorMessage("Invalid ExamDate");
 		} else {
 			boolean flag = adminModel.addCourses(courseName, courseInfo, new ArrayList(Arrays.asList(module)),
-					LocalDate.parse(startDate), LocalDate.parse(endDate), LocalDate.parse(examDate),traineeId);
+					LocalDate.parse(startDate), LocalDate.parse(endDate), LocalDate.parse(examDate), traineeId);
 			if (flag) {
 				adminView.message("Course Added Succesfully");
 				return;
@@ -120,41 +120,33 @@ public class AdminControler implements AdminControlerModelCallBack, AdminControl
 //===================================deleting course info========================
 	@Override
 	public void deleteCourse(String courseId) {
-		boolean deleteCourse=adminModel.deleteCourse(courseId);	
-		if(deleteCourse)
-		{
+		boolean deleteCourse = adminModel.deleteCourse(courseId);
+		if (deleteCourse) {
 			adminView.message("Deleted Succesfully");
-		}
-		else
-		{
+		} else {
 			adminView.errorMessage("No course Available with this id");
 		}
 	}
 
 	@Override
 	public void showTrainers() {
-		List<TrainerCredentials> trainerInfo=adminModel.trainerInfo();
-		if(trainerInfo.size()==0)
-		{
+		List<TrainerCredentials> trainerInfo = adminModel.trainerInfo();
+		if (trainerInfo.size() == 0) {
 			adminView.errorMessage("NO trainer registered");
-		}
-		else {
+		} else {
 			adminView.showTrainerInfo(trainerInfo);
 		}
-		
+
 	}
 
 	@Override
 	public void viewTrainer() {
-		List<TrainerCredentials> trainerInfo=adminModel.trainerInfo();
-		if(trainerInfo.size()==0)
-		{
+		List<TrainerCredentials> trainerInfo = adminModel.trainerInfo();
+		if (trainerInfo.size() == 0) {
 			adminView.errorMessage("NO trainer registered");
-		}
-		else {
+		} else {
 			adminView.chooseTrainers(trainerInfo);
 		}
 	}
-	
 
 }

@@ -1,6 +1,5 @@
 package com.bankingapplication.dto;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,12 +13,12 @@ public class UserInfo {
 	private String dob;// convert it to date ;
 	private int age;
 	private long aadharNo;
-	private static String IFSC="1234IOB000321";
-	private Map<Integer,String> ePassword=new HashMap<Integer,String>();
+	private static String IFSC = "1234IOB000321";
+	private Map<Integer, String> ePassword = new HashMap<Integer, String>();
 	boolean flag;
 
 	public UserInfo(long accountNo, long customerId, String name, String gender, long phoneNumber, String dob, int age,
-			long aadharNumber,boolean flag) {
+			long aadharNumber, boolean flag) {
 		this.accountNo = accountNo;
 		this.customerId = customerId;
 		this.name = name;
@@ -28,7 +27,7 @@ public class UserInfo {
 		this.dob = dob;
 		this.age = age;
 		this.aadharNo = aadharNumber;
-		this.flag=flag;
+		this.flag = flag;
 	}
 
 	public boolean isFlag() {
@@ -107,7 +106,7 @@ public class UserInfo {
 		return IFSC;
 	}
 
-	public Map<Integer,String> getePassword() {
+	public Map<Integer, String> getePassword() {
 		return ePassword;
 	}
 

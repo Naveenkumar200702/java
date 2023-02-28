@@ -7,13 +7,14 @@ public class LoanRequest {
 	private boolean approval;
 	private double salary;
 	private boolean asked;
+
 	public LoanRequest(double loanAmount, double salary, long customerId, boolean loanRequest, boolean approval) {
 		this.loanAmount = loanAmount;
 		this.salary = salary;
 		this.customerId = customerId;
 		this.loanRequest = loanRequest;
 		this.approval = approval;
-		asked=true;
+		asked = true;
 	}
 
 	public double getSalary() {
