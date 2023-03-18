@@ -43,7 +43,7 @@ public class AdminView implements AdminViewCallBack {
 			adminControler.addNewAdmin(adminName, aPassword);
 			break;
 		case 2:
-			System.out.println("loans Requests are");
+			
 			approveLoanRequest(loanRequest);
 			break;
 		case 3:
@@ -57,6 +57,13 @@ public class AdminView implements AdminViewCallBack {
 
 	private void approveLoanRequest(int loanRequest) {
 		List<LoanRequest> list = adminControler.getLoanRequest();
+		if(list.size()==0)
+		{
+			System.out.println("you have no loan request");
+			continueCheck();
+			return;
+		}
+		System.out.println("loans Requests are");
 		for (LoanRequest val : list) {
 			if (val.isLoanRequest() == true) {
 				System.out.printf("%15s| %15s| %15s |%n", "customerId", "Salary", "Loan Amount");

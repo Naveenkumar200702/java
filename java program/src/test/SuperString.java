@@ -1,6 +1,7 @@
 package test;
 import java.util.*;
 public class SuperString {
+	
 	static boolean checkValid(String x,String y)
 	{
 		char[] ch=x.toCharArray();

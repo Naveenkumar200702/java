@@ -54,6 +54,7 @@ public class InboxView implements InboxViewCallBack {
 			System.out.println("Content ---> " + val.getContent());
 			System.out.println("Date ---> " + val.getDate());
 			System.out.println("Time ---> " + val.getTime());
+			System.out.println("---------<<<-------->>>------------");
 		}
 		inboxControler.setInbox(userMail);
 		checkContinue();

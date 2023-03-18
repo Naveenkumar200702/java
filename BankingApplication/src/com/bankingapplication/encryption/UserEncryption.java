@@ -17,7 +17,6 @@ public abstract class UserEncryption {
 			result += (char) n;
 		}
 		encrypt.put(key, result);
-
 		return encrypt;
 	}
 

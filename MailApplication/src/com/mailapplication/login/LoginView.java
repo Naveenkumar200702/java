@@ -23,6 +23,7 @@ public class LoginView implements LoginViewCallBack {
 		System.out.println("Enter 1: LogIn ");
 		System.out.println("Enter 2: SignUp");
 		System.out.println("Enter 3: Forget Password");
+		System.out.println("Enter 4: Exit");
 		System.out.print("Enter your option --->");
 		String option = input.nextLine();
 		if (option.length() > 1) {
@@ -38,8 +39,13 @@ public class LoginView implements LoginViewCallBack {
 			break;
 		case 3:
 			forgetPassword();
+			break;
+		case 4:
+			System.out.println("Thank you for visiting");
+			break;
 		default:
 			System.out.println("Enter a valid option ");
+			loginIndex();
 			break;
 		}
 	}

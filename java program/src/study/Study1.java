@@ -117,11 +117,12 @@ public class Study1{
 		String startDate="2023/02/28";
 		String date1="28/02/2023";
 		
-		System.out.println(startDate.matches("[0-9]{2}[/?][0-9]{2}[/?][0-9]{4}"));
+		//System.out.println(startDate.matches("[0-9]{2}[/?][0-9]{2}[/?][0-9]{4}"));
 		String date=startDate.replace("/", "-");
 		System.out.println(LocalDate.parse(date).isBefore(LocalDate.now()));
 		
 		System.out.printf("%15s","naveenkumar@gmail.com");
+		System.gc();
 	}
 	
 }

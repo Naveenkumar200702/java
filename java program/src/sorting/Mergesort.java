@@ -45,6 +45,7 @@ public class Mergesort {
 	public static void main(String[] args)
 	{
 		int a[]= {1,9,34,7,23,12,78,4};
+		
 		sort(a,0,a.length-1);
 		System.out.println(Arrays.toString(a));
 	}
