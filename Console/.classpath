@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="BankingApplication/src"/>
+	<classpathentry kind="src" path="CourseManagement/src"/>
+	<classpathentry kind="src" path="FlightReservation/src"/>
+	<classpathentry kind="src" path="MailApplication/src"/>
+	<classpathentry kind="src" path="MVVM/BankingApplication/src"/>
+	<classpathentry kind="src" path="MVVM/CourseManagement/src"/>
+	<classpathentry kind="src" path="MVVM/MailApplication/src"/>
+	<classpathentry kind="lib" path="MailApplication/jar file/mysql-connector-j-8.0.32.jar"/>
+	<classpathentry kind="lib" path="MVVM/MailApplication/jar file/mysql-connector-j-8.0.32.jar"/>
+	<classpathentry kind="output" path="BankingApplication/bin"/>
+</classpath>

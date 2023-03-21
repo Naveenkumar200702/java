@@ -1,30 +1,27 @@
 package study;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.lang.reflect.*;
 
 public class Pranov {
 	String name = "naveen";
-	/***
-	 * 
-	 * @param args
-	 * @throws Exception
-	 */
+	
  
 	public static void main(String[] args) throws Exception {
 		// Pranov obj=new a();
 		// a obj=new a();
 		// obj.print();
-		final int n;
+		//final int n;
 		
 //		a obj=new a() {
 //			void print() {
 //				System.out.println("works");
 //			}		
 //		};
-		synchronized(Pranov.class) {
-			
-		}
+//		synchronized(Pranov.class) {
+//			
+//		}
 
 //		
 //		//System.exit(0);
@@ -45,56 +42,52 @@ public class Pranov {
 //		
 //		a obj=new a();
 //		a.small.print();
-		Thread t=new Thread(new Runnable() {
-			public void run()
-			{
-				System.out.println("works");
-			}
-		});
-		Runnable runnable = () -> System.out.println("Hello");
-//		System.out.println(t.getName());
-//		t.start();
+//		Thread t=new Thread(new Runnable() {
+//			public void run()
+//			{
+//				System.out.println("works");
+//			}
+//		});
+//		Runnable runnable = () -> System.out.println("Hello");
+////		System.out.println(t.getName());
+////		t.start();
 		
-		Pranov obj1=new Pranov();
-		System.out.println(obj1.getClass().getName());
-		System.out.println(obj.getClass().getName());
-		System.out.println(object.getClass().getName());
-		System.out.println(object1.getClass().getName());
-		System.out.println(object2.getClass().getName());
-		object1.print();
-		System.out.println(object1.n);
+//		Pranov obj1=new Pranov();
+//		System.out.println(obj1.getClass().getName());
+//		System.out.println(obj.getClass().getName());
+//		System.out.println(object.getClass().getName());
+//		System.out.println(object1.getClass().getName());
+//		System.out.println(object2.getClass().getName());
+//		object1.print();
+//		System.out.println(object1.n);
+		object2.print();
+		System.out.println(object2.n);
+		
+		
 		
 		
 
 	}
-	static hello obj=new hello() {
-		public void show() {
-			System.out.println("works");
-		}
-	};
-	static abi object=new abi() {
-		public void show() {
-			System.out.println("abi class");
-		}
-	};
-	static abirami object1=new abirami() {
-		public void show() {
-			System.out.println("abiramiWorks");
-		}
-	};
+//	static hello obj=new hello() {
+//		public void show() {
+//			System.out.println("works");
+//		}
+//	};
+//	static abi object=new abi() {
+//		public void show() {
+//			System.out.println("abi class");
+//		}
+//	};
+	
 	static abirami object2=new abirami() {
-		public void show() {
-			System.out.println("again works");
-		}
+		
 	};
 	
 
 	
 }
 abstract class abirami{
-	abstract void show();
 	protected int n=10;
-	
 	void print() {
 		System.out.println("hello abi");
 	}

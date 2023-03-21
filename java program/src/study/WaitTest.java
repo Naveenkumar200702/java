@@ -7,37 +7,54 @@ public class WaitTest {
 		Market market=new Market();
 		Manufacture manufacture=new Manufacture(market);
 		Consumer consumer=new Consumer(market);
-		new Thread(consumer).start();
-		new Thread(manufacture).start();
+		Thread t1=new Thread(consumer);//thread-0
+		t1.start();	
+		Thread t2=new Thread(manufacture);//thread-1
+		t2.start();
 	}
 }
 class Market{
 	private int item=0;
 	public synchronized void put() {
-		while(item>=6)
-		{
-			try {
-				wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}	
+		Manufacture manufacture=new Manufacture();
+		synchronized(manufacture) {
+			Consumer consumer=new Consumer();
+			synchronized(consumer) {
+				System.out.println("locks of lock");
+			}
 		}
-		item++;
-		System.out.println("MANUFACTURE ADDED ONE ITEM"+" current stock is "+item);
-		notify();	
+//		if(item>=6)
+//		{
+//			try {
+//				System.out.println("putting stock thread"+Thread.currentThread().getName());
+//				System.out.println("-------------suplier adding ----------------");
+//				this.wait();
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}	
+//		}
+//		item++;
+//		System.out.println("MANUFACTURE ADDED ONE ITEM"+" current stock is "+item);
+//		this.notify();	
 	}
 	
-	public synchronized void get() {
-		while(item<=0)
+	public synchronized void get() throws InterruptedException {
+//		if(item>0)
+//				Thread.sleep(100);
+		if(item<=0)
 		{
 			try{
-				wait();
-			}catch(Exception e) {}	
+				System.out.println("getting stock thread"+Thread.currentThread().getName());
+				System.out.println("-----------consumer waiting-------------");
+				this.wait();
+			}catch(Exception e) {
+				System.out.println(e);
+			}	
 		}
 		item--;
 		System.out.println("consumer brought 1 product");
 		System.out.println("current stock is===="+item);
-		notify();
+		this.notify();
 	}
 }
 
@@ -46,10 +63,18 @@ class Consumer implements Runnable{
 	public Consumer(Market market) {
 		object=market;
 	}
+	public Consumer() {
+		// TODO Auto-generated constructor stub
+	}
 	public void run() {
 		for(int i=0;i<8;i++)
 		{
-			object.get();
+			try {
+				object.get();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }
@@ -59,8 +84,11 @@ class Manufacture implements Runnable{
 	public Manufacture(Market market) {
 		this.market=market;
 	}
+	public Manufacture() {
+		// TODO Auto-generated constructor stub
+	}
 	public void run() {
-		for(int i=0;i<8;i++)
+		for(int i=0;i<10;i++)
 		{
 			market.put();
 		}
