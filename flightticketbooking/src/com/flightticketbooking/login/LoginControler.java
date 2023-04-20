@@ -17,6 +17,8 @@ public class LoginControler {
 			loginView.userLogin();
 		} else if (option == 3) {
 			loginView.addUser();
+		}else if(option ==4) {
+			loginView.Exit();
 		}
 		else {
 			loginView.loginFailed("Please Enter a valid Option");

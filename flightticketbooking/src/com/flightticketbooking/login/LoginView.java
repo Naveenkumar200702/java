@@ -23,6 +23,7 @@ public class LoginView {
 		System.out.println("Enter 1: Admin Login");
 		System.out.println("Enter 2: User Login");
 		System.out.println("Enter 3: New User");
+		System.out.println("Enter 4: Exit");
 		System.out.print("Choose an option -->");
 		int option = input.nextInt();
 		input.nextLine();
@@ -71,5 +72,10 @@ public class LoginView {
 		System.out.println("Welcome --> " + userName);
 		AdminView adminView = new AdminView(this);
 		adminView.adminIndex();
+	}
+
+	public void Exit() {
+		System.out.println("Thanks for Visiting..");
+		
 	}
 }

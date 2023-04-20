@@ -31,6 +31,7 @@ public class AdminView {
 		String flightName = input.nextLine();
 		System.out.print("Enter Total seat-->");
 		int totalSeat = input.nextInt();
+		input.nextLine();
 		System.out.print("Enter PickupPoint-->");
 		String pickUpPoint = input.nextLine();
 		System.out.print("Enter Destination Point-->");
