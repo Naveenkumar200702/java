@@ -2,6 +2,11 @@ package study;
 
 import java.io.*;
 import java.util.ArrayList;
+interface HelloMain{
+	public  static void print() {
+		
+	}
+}
  public class CheckMain {
 //	CheckMain s;
 //	public void finalize() {
